@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 850,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_duration_filter.csv"
+  },
+  "params": [
+    {
+      "name": "select_year",
+      "value": 2020,
+      "bind": {
+        "input": "select",
+        "options": [2016, 2017, 2018, 2019, 2020],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.year == select_year"},
+    {
+      "fold": ["unemployed_active", "unemployed_inactive"],
+      "as": ["status", "count"]
+    },
+    {
+      "calculate": "datum.status == 'unemployed_active' ? 'Active' : 'Inactive'",
+      "as": "status_label"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {"filled": true, "size": 70},
+    "strokeWidth": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "title": "Month",
+      "sort": [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ]
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of Unemployed Persons"
+    },
+    "color": {
+      "field": "status_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Active", "Inactive"],
+        "range": ["#6c5de6", "#c46487"]
+      },
+      "title": "Unemployment Type"
+    },
+    "tooltip": [
+      {"field": "month", "title": "Month"},
+      {"field": "status_label", "title": "Type"},
+      {
+        "aggregate": "sum",
+        "field": "count",
+        "title": "Unemployed Persons",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+    "axisX": {"grid": false, "labelAngle": 0},
+    "axisY": {"grid": false},
+    "legend": {"titleFontSize": 13, "labelFontSize": 12}
+  }
+}
