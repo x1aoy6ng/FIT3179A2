@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {"gender": "Male", "unemployment_rate_percentage": 66.80},
+      {"gender": "Female", "unemployment_rate_percentage": 70.30}
+    ]
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "unemployment_rate_percentage",
+          "as": "total_rate"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.unemployment_rate_percentage / datum.total_rate) * 100",
+      "as": "share_percent"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 110},
+      "encoding": {
+        "theta": {"field": "share_percent", "type": "quantitative"},
+        "color": {
+          "field": "gender",
+          "type": "nominal",
+          "title": "Gender",
+          "scale": {"domain": ["Male", "Female"], "range": ["#2677d4", "#fa9ad5"]}
+        },
+        "tooltip": [
+          {"field": "gender", "title": "Gender"},
+          {
+            "field": "share_percent",
+            "type": "quantitative",
+            "title": "Unemployment Rate(%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "view": {"stroke": null}
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {"stratum": "Urban", "unemployment_rate_percentage": 68.70},
+      {"stratum": "Rural", "unemployment_rate_percentage": 62.70}
+    ]
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "unemployment_rate_percentage",
+          "as": "total_rate"
+        }
+      ]
+    },
+    {
+      "calculate": "(datum.unemployment_rate_percentage / datum.total_rate) * 100",
+      "as": "stratum_percent"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 110},
+      "encoding": {
+        "theta": {"field": "stratum_percent", "type": "quantitative"},
+        "color": {
+          "field": "stratum",
+          "type": "nominal",
+          "title": "Stratum",
+          "scale": {"domain": ["Urban", "Rural"], "range": ["#125fb7", "#c46487"]}
+        },
+        "tooltip": [
+          {"field": "stratum", "title": "Stratum"},
+          {
+            "field": "stratum_percent",
+            "type": "quantitative",
+            "title": "Unemployment Rate(%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "view": {"stroke": null}
+}
