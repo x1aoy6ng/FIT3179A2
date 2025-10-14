@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_duration_filter.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "unemployed_active_3month",
+        "unemployed_active_6month",
+        "unemployed_active_12month",
+        "unemployed_active_long"
+      ],
+      "as": ["duration", "unemployed_person"]
+    },
+    {
+      "calculate": "replace(datum.duration, 'unemployed_active_', '')",
+      "as": "duration_label"
+    },
+    {
+      "calculate": "datum.duration_label == '3month' ? '3 months' : datum.duration_label == '6month' ? '6 months' : datum.duration_label == '12month' ? '12 months' : 'more than 12 months'",
+      "as": "duration_clean"
+    },
+    {
+      "calculate": "datum.duration_clean == '3 months' ? 1 : datum.duration_clean == '6 months' ? 2 : datum.duration_clean == '12 months' ? 3 : 4",
+      "as": "duration_order"
+    },
+    {
+      "aggregate": [
+        {"op": "sum", "field": "unemployed_person", "as": "total_unemployed"}
+      ],
+      "groupby": ["month", "duration_clean", "duration_order"]
+    }
+  ],
+  "mark": {"type": "area", "interpolate": "monotone"},
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "title": "Month",
+      "sort": [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ]
+    },
+    "y": {
+      "field": "total_unemployed",
+      "type": "quantitative",
+      "title": "Total Unemployed Persons"
+    },
+    "color": {
+      "field": "duration_clean",
+      "type": "nominal",
+      "title": "Unemployment Duration",
+      "scale": {
+        "domain": ["more than 12 months", "12 months", "6 months", "3 months"],
+        "range": ["#e6a8b8", "#d9879b", "#cf6679", "#af486e"]
+      },
+      "sort": ["more than 12 months", "12 months", "6 months", "3 months"],
+      "legend": {
+        "titleFontWeight": "bold",
+        "titleColor": "#000"
+      }
+    },
+    "order": {"field": "duration_order", "type": "quantitative"},
+    "tooltip": [
+      {"field": "month", "title": "Month"},
+      {"field": "duration_clean", "title": "Duration"},
+      {
+        "field": "total_unemployed",
+        "type": "quantitative",
+        "title": "Unemployed Population",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "config": {
+    "axisX": {"grid": false},
+    "axisY": {"grid": false}
+  }
+}
