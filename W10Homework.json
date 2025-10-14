@@ -1,0 +1,137 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_youth_filter.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.age_group + ' years old'",
+      "as": "age_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": "Year"},
+        "y": {
+          "aggregate": "sum",
+          "field": "unemployed_person",
+          "type": "quantitative",
+          "title": "Total Unemployed Persons"
+        },
+        "color": {
+          "field": "age_label",
+          "type": "nominal",
+          "title": "Age Group",
+          "scale": {
+            "domain": ["15–24 years old", "25–30 years old"],
+            "range": ["#c699bc", "#c46487"]
+          },
+          "legend": {
+            "title": "Age Group",
+            "titleFontWeight": "bold",
+            "titleColor": "#000000",
+            "values": ["15–24 years old", "25–30 years old"],
+            "labelExpr": "replace(datum.label, ' years old', '')" 
+          }
+        },
+        "order": {
+          "field": "age_label",
+          "sort": ["25–30 years old", "15–24 years old"]
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "age_label", "title": "Age Group"},
+          {
+            "aggregate": "sum",
+            "field": "unemployed_person",
+            "title": "Unemployed Population",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "line",
+        "color": "#6c5de6",     
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {
+          "aggregate": "sum",
+          "field": "unemployed_person",
+          "type": "quantitative"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#6c5de6",
+        "size": 80,
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {
+          "aggregate": "sum",
+          "field": "unemployed_person",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {
+            "aggregate": "sum",
+            "field": "unemployed_person",
+            "type": "quantitative",
+            "title": "Total Unemployed Population",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -15,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#3b3b3b"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {
+          "aggregate": "sum",
+          "field": "unemployed_person",
+          "type": "quantitative"
+        },
+        "text": {
+          "aggregate": "sum",
+          "field": "unemployed_person",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+    "legend": {
+      "titleFontSize": 13,
+      "labelFontSize": 12
+    }
+  }
+}
