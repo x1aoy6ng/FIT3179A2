@@ -1,0 +1,165 @@
+/* the root variables */
+:root {
+    --panel-max-width: 1200px;
+    --panel-padding: 20px;
+    --bg-opacity: 0.55;
+}
+
+/* full page white block */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    overflow-x: hidden;
+}
+
+/* blur background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    filter: blur(10px) brightness(0.9);
+    transform: scale(1.05);
+    z-index: -2;
+}
+
+/* light overlay for the contrast */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, var(--bg-opacity));
+    z-index: -1;
+}
+
+/* the page layout — centers everything */
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px 16px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* white panel */
+.panel {
+    width: 100%;
+    max-width: var(--panel-max-width);
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(18, 24, 34, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* header */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px 20px;
+    border-bottom: 2px solid #eee;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #222;
+}
+
+/* body container */
+.panel-body {
+    width: 100%;
+    padding: var(--panel-padding);
+    box-sizing: border-box;
+}
+
+/* chart section */
+.chart-section {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.chart-section:last-child {
+    margin-bottom: 0;
+}
+
+/* section titles */
+.chart-section h4 {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+}
+
+/* chart container */
+.chart-section > div[id] {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* put each donut chart side by side */
+.side-by-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.side-by-side .half {
+    flex: 1;
+    min-width: 320px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.side-by-side .half h4 {
+    font-size: 1rem;
+}
+
+/* footer */
+.panel-footer {
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.panel-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    :root {
+        --panel-padding: 24px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .side-by-side {
+        flex-direction: column;
+    }
+
+    .side-by-side .half {
+        width: 100%;
+    }
+}

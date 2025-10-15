@@ -15,20 +15,61 @@
     
 </head>
 <body>
-    <h2 style="text-align: center; font-family:Arial, Helvetica, sans-serif; font-weight: bold;">Malaysia's Unemployment Rate</h2>
-    
-    <!-- Homework9 (MAP) -->
-    <section style="margin: 40px; text-align: center;">
-        <h4>Unemployment Rate by State in Malaysia (2020)</h4>
-        <div id="map"></div>
-    </section>
-    <script src="W9Homework.js"></script> 
+    <div class="page-wrapper">
+        <div class="panel">
+            <header>
+                <h1>Malaysia's Unemployment Rate</h1>
+            </header>
 
-    <!-- Homework10 (BAR CHART) -->
-    <section style="margin: 40px; text-align: center;">
-        <h4>Youth Unemployment Trends in Malaysia</h4>
-        <div id="barchart"></div>
-    </section>
+            <main class="panel-body">
+                <!-- map -->
+                <section class="chart-section">
+                    <h4>Unemployment Rate by State in Malaysia (2020)</h4>
+                    <div id="map"></div>
+                </section>
+
+                <!-- bar chart -->
+                <section class="chart-section">
+                    <h4>Youth Unemployment Trends in Malaysia</h4>
+                    <div id="barchart"></div>
+                </section>
+
+                <!-- pie charts -->
+                <section class="chart-section">
+                    <h4>Unemployment Rate Distribution by Gender and Stratum</h4>
+                    <div class="side-by-side">
+                        <div class="half">
+                            <div id="genderdonut"></div>
+                        </div>
+                        <div class="half">
+                            <div id="stratumdonut"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- duration stacked area chart -->
+                <section class="chart-section">
+                    <h4>Unemployment Duration Distribution</h4>
+                    <div id="durationarea"></div>
+                </section>
+
+                <!-- slope chart -->
+                <section class="chart-section">
+                    <h4>Active vs Inactive Unemployment Trends</h4>
+                    <div id="slopechart"></div>
+                    <div id="yearSelectorContainer"></div>
+                </section>
+            </main>
+
+            <footer class="panel-footer">
+                <p style="font-size:0.9rem; color:#666; text-align:center;">
+                Author: YeoYuXuan 34286225
+                </p>
+            </footer>
+            </div>
+    </div>
+    <!-- Scripts to Embed JSON Charts -->
     <script src="W10Homework.js"></script>
+    
 </body>
 </html>
