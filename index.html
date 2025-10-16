@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Malaysia's Unemployment</title>
     <!-- VegaLite Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -18,20 +18,59 @@
     <div class="page-wrapper">
         <div class="panel">
             <header>
-                <h1>Malaysia's Unemployment Rate</h1>
+                <h1>Malaysia's Unemployment</h1>
+                <p class="subtitle">
+                    Unemployment rate is a key indicator of a country's economic performance and labour market health. 
+                    It reflects the proportion of the labour force that is not currently employed and available for work, 
+                    regardless of whether they are actively seeking employment. The latest labour report released by the 
+                    Department of Statistics Malaysia (DOSM) shows that the unemployment rate stood at 3.0% in August 2025, 
+                    signaling a stable job market as Malaysia continues to strengthen its post-pandemic recovery.
+                </p>
             </header>
 
             <main class="panel-body">
                 <!-- map -->
                 <section class="chart-section">
-                    <h4>Unemployment Rate by State in Malaysia (2020)</h4>
-                    <div id="map"></div>
+                    <div class="map-container">
+                        <!-- Left side: Map -->
+                        <div class="map-left">
+                            <div id="map"></div>
+                            <div id="yearSelectorContainer"></div>
+                        </div>
+
+                        <!-- Right side: Title + Text -->
+                        <div class="map-right">
+                            <h4>Unemployment Rate by State in Malaysia</h4>
+                            <p class="map-description">
+                                The map illustrates the unemployment rate across Malaysian states. From 2016 to 2020, Sabah consistently appears in darker shades, indicating one of the highest unemployment rates in the country. This ongoing pattern points to challenges in the state's labour market, such as limited industrial diversification and fewer opportunities for high-value employment.
+                            </p>
+                            <p class="map-description">
+                                In contrast, most Peninsular Malaysia states show lighter shades, reflecting lower unemployment rates. This may be due to their stronger manufacturing and service sectors, which provide more stable job opportunities.
+                            </p>
+                        </div>
+                    </div>
                 </section>
+
 
                 <!-- bar chart -->
                 <section class="chart-section">
-                    <h4>Youth Unemployment Trends in Malaysia</h4>
-                    <div id="barchart"></div>
+                    <div class="bar-container">
+                        <!-- Text on the left -->
+                        <div class="bar-left">
+                            <h4>Youth Unemployment Trends in Malaysia</h4>
+                            <p>
+                                The chart illustrates youth unemployment trends in Malaysia from 2016 to 2020, focusing on two key age groups: 15–24 and 25–30 years old. Overall, youth unemployment shows a steady upward movement over the five-year period. 
+                            </p>
+                            <p>
+                                The total number of unemployed youths rose from about 4,762 in 2016 to over 6,000 in 2020, with a noticeable spike in the final year. This sharp increase likely reflects the economic slowdown and job market challenges triggered by the COVID-19 pandemic, which disproportionately affected young job seekers entering or navigating the workforce.
+                            </p>
+                        </div>
+
+                        <!-- Chart on the right -->
+                        <div class="bar-right">
+                            <div id="barchart"></div>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- pie charts -->

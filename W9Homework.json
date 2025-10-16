@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 400,
+  "width": "container",
+  "height": 380,
   "projection": {"type": "mercator", "center": [110, 4]},
   "view": {"stroke": "#cccccc", "strokeWidth": 0.5, "fill": "#eef6fb"},
   "params": [
@@ -27,17 +27,17 @@
     },
     {
       "data": {
-       "url": "https://x1aoy6ng.github.io/FIT3179Week9Homework/malaysia_state_sex_filter.csv"
+        "url": "https://x1aoy6ng.github.io/FIT3179Week9Homework/malaysia_state_sex_filter.csv"
       },
       "transform": [
         {"filter": "datum.year == FilterYear"},
         {
           "aggregate": [
             {
-             "op": "sum",
-             "field": "unemployment_rate_percentage",
-             "as": "unemployment_rate_percentage"
-             }
+              "op": "sum",
+              "field": "unemployment_rate_percentage",
+              "as": "unemployment_rate_percentage"
+            }
           ],
           "groupby": ["state"]
         },
@@ -73,23 +73,42 @@
         "color": {
           "field": "unemployment_rate_normalised",
           "type": "quantitative",
-          "scale" : {
+          "scale": {
             "type": "threshold",
-            "domain" : [0, 0.25, 0.5, 0.75, 1],
-            "range" : ["#d3f2a4", "#8eda95", "#5fb086", "#35857d", "#136069"]
+            "domain": [0, 0.25, 0.5, 0.75, 1],
+            "range": ["#d3f2a4", "#8eda95", "#5fb086", "#35857d", "#136069"]
           },
           "legend": {
             "title": "Unemployment rate",
-            "orient": "right",
-            "offset": 30
+            "orient": "top-right",
+            "direction": "horizontal",
+            "titleAnchor": "middle",   
+            "titleAlign": "center",         
+            "offset": 0
           }
+
         },
         "tooltip": [
           {"field": "properties.name", "type": "nominal", "title": "State"},
           {"field": "year", "type": "ordinal", "title": "Year"},
-          {"field": "unemployment_rate_normalised", "type": "quantitative", "title": "Unemployment Rate (%)", "format": ".2f"}
+          {
+            "field": "unemployment_rate_normalised",
+            "type": "quantitative",
+            "title": "Unemployment Rate (%)",
+            "format": ".2f"
+          }
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "legend": {
+      "orient": "top-right",
+      "direction": "horizontal",
+      "titleFontSize": 12,
+      "labelFontSize": 11,
+      "offset": 10,
+      "padding": 10
+    }
+  }
 }

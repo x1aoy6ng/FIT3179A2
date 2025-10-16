@@ -1,11 +1,11 @@
-/* the root variables */
+/* Variables */
 :root {
-    --panel-max-width: 1200px;
-    --panel-padding: 20px;
+    --panel-max-width: 1100px;
+    --panel-padding: 40px;
     --bg-opacity: 0.55;
 }
 
-/* full page white block */
+/* Full page base */
 html, body {
     height: 100%;
     margin: 0;
@@ -14,17 +14,20 @@ html, body {
     overflow-x: hidden;
 }
 
-/* blur background */
+/* Blurred background */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
     filter: blur(10px) brightness(0.9);
     transform: scale(1.05);
     z-index: -2;
 }
 
-/* light overlay for the contrast */
+/* Light overlay for contrast */
 body::after {
     content: "";
     position: fixed;
@@ -33,7 +36,7 @@ body::after {
     z-index: -1;
 }
 
-/* the page layout — centers everything */
+/* Page layout — centers everything */
 .page-wrapper {
     display: flex;
     justify-content: center;
@@ -42,107 +45,260 @@ body::after {
     box-sizing: border-box;
 }
 
-/* white panel */
+/* White panel */
 .panel {
     width: 100%;
     max-width: var(--panel-max-width);
     background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(18, 24, 34, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(18, 24, 34, 0.15);
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-/* header */
+/* Header */
 header {
     width: 100%;
     text-align: center;
-    padding: 40px 20px 20px;
-    border-bottom: 2px solid #eee;
+    padding: 50px 30px 40px;
+    border-bottom: 2px solid #e8eef5;
+    background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2rem;
+    margin: 0 0 24px 0;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: #222;
+    color: #1a202c;
+    letter-spacing: -0.5px;
 }
 
-/* body container */
+header .subtitle {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #4a5568;
+    text-align: center;
+    padding: 0 20px;
+    font-weight: 400;
+}
+
+/* Body container */
 .panel-body {
     width: 100%;
     padding: var(--panel-padding);
     box-sizing: border-box;
 }
 
-/* chart section */
+/* Each chart section */
 .chart-section {
     width: 100%;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    margin-bottom: 60px;
 }
 
 .chart-section:last-child {
     margin-bottom: 0;
 }
 
-/* section titles */
+/* Section titles */
 .chart-section h4 {
-    margin: 0 0 20px 0;
-    font-size: 1.1rem;
+    margin: 0 0 24px 0;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #222;
+    color: #2d3748;
     text-align: center;
+    letter-spacing: -0.3px;
 }
 
-/* chart container */
+/* Chart containers - CRITICAL FIX */
 .chart-section > div[id] {
     width: 100%;
     overflow: hidden;
-}
-
-/* put each donut chart side by side */
-.side-by-side {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+}
+
+/* Map container with side-by-side layout */
+.map-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
     width: 100%;
-    max-width: 900px;
+    justify-content: space-between;
+}
+
+.map-left {
+    flex: 1;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.map-left #map {
+    width: 100%;
+}
+
+/* Map controls container below the map */
+#map .vega-embed.has-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style the controls area below map */
+#map .vega-bind {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Push year selector to the right */
+#map .vega-bindings {
+    margin-left: auto;
+}
+
+#map canvas {
+    max-width: 100%;
+}
+
+.map-right {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.map-right h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0 0 5px 0; /* reduced bottom margin */
+}
+
+.map-description {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #4a5568;
+    text-align: left;
+    word-spacing: 0.05em;
+}
+
+/* ================================
+   Bar Chart Side-by-Side Layout
+=================================== */
+.bar-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bar-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bar-left h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.bar-left p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #4a5568;
+    margin: 0;
+    text-align: left;
+}
+
+.bar-right {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+/* Responsive: stack text above chart */
+@media (max-width: 768px) {
+    .bar-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+    }
+
+    .bar-left, .bar-right {
+        width: 100%;
+        max-width: none;
+    }
+
+    .bar-right {
+        margin-top: 20px;
+    }
+}
+
+
+/* For donut charts side-by-side */
+.side-by-side {
+    display: flex;
+    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .side-by-side .half {
     flex: 1;
-    min-width: 320px;
-    max-width: 420px;
+    min-width: 280px;
+    max-width: 450px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
 }
 
 .side-by-side .half h4 {
     font-size: 1rem;
 }
 
-/* footer */
+/* Footer */
 .panel-footer {
     width: 100%;
-    padding: 20px;
-    border-top: 1px solid #eee;
+    padding: 24px;
+    border-top: 2px solid #e8eef5;
     text-align: center;
+    background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
 }
 
 .panel-footer p {
     margin: 0;
     font-size: 0.9rem;
-    color: #666;
+    color: #718096;
+    font-weight: 500;
 }
 
 /* Responsive tweaks */
@@ -160,6 +316,14 @@ header h1 {
     }
 
     .side-by-side .half {
+        width: 100%;
+    }
+
+    .map-container {
+        flex-direction: column;
+    }
+
+    .map-right {
         width: 100%;
     }
 }
