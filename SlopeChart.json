@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 530,
   "height": 350,
+  "background": "#f0f4f8",
   "data": {
     "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_duration_filter.csv"
   },
@@ -16,45 +17,115 @@
       "as": "status_label"
     }
   ],
-  "mark": {
-    "type": "line",
-    "point": {"filled": true, "size": 70},
-    "strokeWidth": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "month",
-      "type": "ordinal",
-      "title": "Month",
-      "sort": [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ]
-    },
-    "y": {
-      "aggregate": "sum",
-      "field": "count",
-      "type": "quantitative",
-      "title": "Number of Unemployed Persons"
-    },
-    "color": {
-      "field": "status_label",
-      "type": "nominal",
-      "scale": {
-        "domain": ["Active", "Inactive"],
-        "range": ["#6c5de6", "#c46487"]
-      },
-      "legend": null
-    },
-    "tooltip": [
-      {"field": "month", "title": "Month"},
-      {"field": "status_label", "title": "Type"},
+  "layer": [
       {
+        "mark": {
+      "type": "line",
+      "point": {"filled": true, "size": 70},
+      "strokeWidth": 3
+    },
+    "encoding": {
+      "x": {
+        "field": "month",
+        "type": "ordinal",
+        "title": "Month",
+        "sort": [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ]
+      },
+      "y": {
         "aggregate": "sum",
         "field": "count",
-        "title": "Unemployed Persons",
-        "format": ",.0f"
+        "type": "quantitative",
+        "title": "Number of Unemployed Persons"
+      },
+      "color": {
+        "field": "status_label",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Active", "Inactive"],
+          "range": ["#6c5de6", "#c46487"]
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "month", "title": "Month"},
+        {"field": "status_label", "title": "Type"},
+        {
+          "aggregate": "sum",
+          "field": "count",
+          "title": "Unemployed Persons",
+          "format": ",.0f"
+        }
+      ]
+    }
+    },
+    {
+      "transform": [
+        {"filter": "datum.month == 'April' && datum.status_label == 'Inactive'"}
+      ],
+        "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 15,
+        "dy": -18,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "title": "Month",
+          "sort": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ]
+      },
+      "y": {
+        "aggregate": "sum",
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of Unemployed Persons"
+      },
+        "text": {"value": ["Pandemic lockdowns in April led to a temporary" ,"surge in inactive job seekers"]},
+        "color": {"value": "#c46487"}
       }
-    ]
-  }
+    },
+    {
+      "transform": [
+        {"filter": "datum.month == 'September' && datum.status_label == 'Active'"}
+      ],
+        "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -55,
+        "dy": 20,
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "ordinal",
+          "title": "Month",
+          "sort": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ]
+      },
+      "y": {
+        "aggregate": "sum",
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of Unemployed Persons"
+      },
+        "text": {"value": ["Active unemployment began to", "rise again in September, signaling" ,"renewed job-seeking efforts"]},
+        "color": {"value": "#6c5de6"}
+      }
+    }
+  ]
+
+  
 }

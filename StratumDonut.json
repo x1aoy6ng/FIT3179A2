@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#f0f4f8",
   "data": {
     "values": [
       {"stratum": "Urban", "unemployment_rate_percentage": 73.70},

@@ -103,29 +103,38 @@
 
         <!-- donut chart -->
         <section class="chart-section">
-          <div class="donut-container chart-box">
+        <div class="donut-container chart-box">
             <h4 class="donut-title">Unemployment Rate Distribution by Gender and Stratum</h4>
             <div class="donut-inner">
-              <div class="donut-col">
+
+            <!-- Gender donut -->
+            <div class="donut-col">
                 <p>
-                  Unemployment rates remain fairly balanced between males and females, indicating similar challenges in securing employment. 
+                Unemployment rates remain fairly balanced between males and females, indicating similar challenges in securing employment. 
                 </p>
-                <p>
-                    However, women experience a slightly higher rate, hinting at persistent inequalities in access to job opportunities and workforce participation.
-                </p>
+                <div class="donut-wrapper">
                 <div id="genderdonut"></div>
-              </div>
-              <div class="donut-col">
-                <p>
-                  Urban areas show a higher concentration of unemployment, as more job seekers pursue city opportunities.
-                </p>
-                <p>
-                In contrast, rural unemployment reflects limited economic diversification and fewer avenues for high-skilled work.
-                </p>
-                <div id="stratumdonut"></div>
-              </div>
+                <div class="donut-annotation gender-annotation">
+                    Small gap remains, where females face slightly higher unemployment.
+                </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Stratum donut -->
+            <div class="donut-col">
+                <p>
+                Urban areas record higher unemployment than rural areas due to denser job markets and stronger job competition.
+                </p>
+                <div class="donut-wrapper">
+                <div id="stratumdonut"></div>
+                <div class="donut-annotation stratum-annotation">
+                    Rural areas have smaller and less active labour forces.
+                </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
         </section>
 
         <!-- duration chart -->
@@ -141,7 +150,15 @@
               </p>
             </div>
             <div class="right">
-              <div id="durationarea"></div>
+              <div class="chart-annotation-wrapper">
+                <div id="durationarea"></div>
+
+                <!-- Annotation boxes -->
+                <div class="duration-annotation ann-3month">3 months</div>
+                <div class="duration-annotation ann-6month">6 months</div>
+                <div class="duration-annotation ann-12month">12 months</div>
+                <div class="duration-annotation ann-long">> 12 months</div>
+              </div>
             </div>
           </div>
         </section>

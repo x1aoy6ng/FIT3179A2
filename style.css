@@ -92,7 +92,7 @@ header .subtitle {
 
 /* --- reusable chart box --- */
 .chart-box {
-  background: #ffffff;
+  background: #f0f4f8;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
@@ -156,7 +156,7 @@ header .subtitle {
 }
 
 .map-container-wrapper {
-  background: #ffffff;
+  background: #f0f4f8;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
@@ -338,6 +338,81 @@ header .subtitle {
   color: #718096;
   font-weight: 500;
 }
+
+.chart-annotation-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* general style for all annotation boxes */
+.duration-annotation {
+  position: absolute;
+  color: #333;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Position + color of each label */
+.ann-3month {
+  bottom: 130px;
+  right: 280px;
+  color: white;
+}
+
+.ann-6month {
+  bottom: 230px;
+  right: 250px;
+  color: white;
+}
+
+.ann-12month {
+  bottom: 295px;
+  right: 200px;
+  color: white;
+}
+
+.ann-long {
+  bottom: 328px;
+  right: 150px;
+  color: white;
+}
+
+.donut-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.donut-annotation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: justify;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 200px;
+  line-height: 1.2;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  pointer-events: none; /* prevents blocking chart hover */
+}
+
+.gender-annotation {
+  background-color: white;
+}
+
+.stratum-annotation {
+  background-color: white;
+}
+
+
 
 /* --- responsive tweaks --- */
 @media (max-width: 900px) {

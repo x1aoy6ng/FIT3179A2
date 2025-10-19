@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#f0f4f8",
   "data": {
     "values": [
       {"gender": "Male", "unemployment_rate_percentage": 66.80},
