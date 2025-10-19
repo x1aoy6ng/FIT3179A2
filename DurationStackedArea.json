@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 300,
-  "height": 275,
+  "width": 550,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_duration_filter.csv"
   },
@@ -59,10 +59,7 @@
         "range": ["#e6a8b8", "#d9879b", "#cf6679", "#af486e"]
       },
       "sort": ["more than 12 months", "12 months", "6 months", "3 months"],
-      "legend": {
-        "titleFontWeight": "bold",
-        "titleColor": "#000"
-      }
+      "legend": null
     },
     "order": {"field": "duration_order", "type": "quantitative"},
     "tooltip": [
@@ -75,9 +72,5 @@
         "format": ",.0f"
       }
     ]
-  },
-  "config": {
-    "axisX": {"grid": false},
-    "axisY": {"grid": false}
   }
 }

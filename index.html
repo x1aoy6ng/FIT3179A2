@@ -1,169 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malaysia's Unemployment</title>
-    <!-- VegaLite Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malaysia's Unemployment</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    
+  <!-- VegaLite Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="page-wrapper">
-        <div class="panel">
-            <header>
-                <h1>Malaysia's Unemployment</h1>
-                <p class="subtitle">
-                    Unemployment rate is a key indicator of a country's economic performance and labour market health. 
-                    It reflects the proportion of the labour force that is not currently employed and available for work, 
-                    regardless of whether they are actively seeking employment. The latest labour report released by the 
-                    Department of Statistics Malaysia (DOSM) shows that the unemployment rate stood at 3.0% in August 2025, 
-                    signaling a stable job market as Malaysia continues to strengthen its post-pandemic recovery.
-                </p>
-            </header>
+  <div class="page-wrapper">
+    <div class="panel"> 
 
-            <main class="panel-body">
-                <!-- map -->
-                <section class="chart-section">
-                <div class="map-container-wrapper">
-                    <div class="map-container">
-                    <!-- Left side: Map -->
-                    <div class="map-left">
-                        <div id="map"></div>
-                        <div id="yearSelectorContainer"></div>
-                    </div>
+      <!-- header -->
+      <header>
+        <h1>Malaysia's Unemployment Rate</h1>
+        <p class="subtitle">
+          The latest Department of Statistics Malaysia (DOSM) report shows that Malaysia’s unemployment rate reached <strong>3.0%</strong> in August 2025.
+        </p>
+      </header>
 
-                    <!-- Right side: Title + Text -->
-                    <div class="map-right">
-                        <h4>Unemployment Rate by State in Malaysia</h4>
-                        <p>
-                        The map illustrates the unemployment rate across Malaysian states. From 2016 to 2020, Sabah consistently appears in darker shades, indicating one of the highest unemployment rates in the country. This ongoing pattern points to challenges in the state's labour market, such as limited industrial diversification and fewer opportunities for high-value employment.
-                        </p>
-                    </div>
-                    </div>
-                </div>
-                </section>
+      <!-- main body -->
+      <main class="panel-body">
+        
+        <section class="chart-section">
+        <div class="map-container-wrapper">
+            <div class="map-container">
+            
+            <!-- map -->
+            <div class="map-left">
+                <div id="map"></div>
+                <div id="map-legend"></div>
 
-                <!-- bar chart -->
-                <section class="chart-section">
-                <div class="bar-container-wrapper">
-                    <div class="bar-container">
-                    
-                    <!-- Left: Text -->
-                    <div class="bar-left">
-                        <h4>Youth Unemployment Trends in Malaysia</h4>
-                        <p>
-                        The chart illustrates youth unemployment trends in Malaysia from 2016 to 2020, focusing on two key age groups: 15–24 and 25–30 years old. Overall, youth unemployment shows a steady upward movement over the five-year period.
-                        </p>
-                        <p>
-                        The total number of unemployed youths rose from about 4,762 in 2016 to over 6,000 in 2020, with a noticeable spike in the final year. This sharp increase likely reflects the economic slowdown and job market challenges triggered by the COVID-19 pandemic, which disproportionately affected young job seekers entering or navigating the workforce.
-                        </p>
-                    </div>
-
-                    <!-- Right: Chart -->
-                    <div class="bar-right">
-                        <div id="barchart"></div>
-                    </div>
-
+                <div class="insight-box">
+                    <div class="year-selector-wrapper">
+                    <p><em>Click the year selector below to explore changes over time</em></p>
+                    <label for="yearSelectHeader">Select Year:</label>
+                    <select id="yearSelectHeader">
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                    </select>
                     </div>
                 </div>
-                </section>
-
-
-                <!-- pie charts -->
-                <section class="chart-section">
-                    <div class="donut-container">
-                        <h4>Unemployment Rate Distribution by Gender and Stratum</h4>
-
-                        <div class="donut-inner">
-                        <!-- Left column: Gender -->
-                        <div class="donut-col">
-                            <p>
-                            Unemployment is fairly evenly distributed between males and females,
-                            indicating that both face similar challenges in the job market.
-                            However, the slightly higher share among women suggests possible
-                            inequalities in job access, participation, and representation across industries.
-                            </p>
-                            <div id="genderdonut"></div>
-                        </div>
-
-                        <!-- Right column: Stratum -->
-                        <div class="donut-col">
-                            <p>
-                            The chart compares unemployment between urban and rural areas.
-                            A larger proportion is observed in urban regions, which often attract
-                            more job seekers due to better access to education, industries, and services.
-                            In contrast, rural areas record a smaller share of unemployment,
-                            though the issue there can be more deep-rooted, tied to limited
-                            industrial activity and reliance on primary sectors.
-                            </p>
-                            <div id="stratumdonut"></div>
-                        </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- duration stacked area chart -->
-                <section class="chart-section">
-                    <div class="duration-container">
-                        <div class="duration-left">
-                        <h4>Unemployment Duration Distribution</h4>
-                        <p>
-                            The chart shows how unemployment duration varies throughout the year, illustrating the share of individuals unemployed for different periods — three months, six months, twelve months, and more than twelve months. 
-                            Overall, most unemployed individuals secure work within the first three to six months, while long-term unemployment remains relatively low. 
-                            However, a gradual increase in longer durations toward the end of the year may signal slower job recovery or reduced hiring activity during that period.
-                        </p>
-                        </div>
-
-                        <div class="duration-right">
-                        <div id="durationarea"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- slope chart -->
-                <section class="chart-section">
-                <div class="slope-container">
-                    <h4>Active vs Inactive Unemployment Trends</h4>
-
-                    <p>
-                    Active unemployment represents individuals who are <strong>actively seeking work</strong> but have not yet secured a job.
-                    </p>
-                    <p>
-                    Inactive unemployment refers to those who are <strong>not currently looking for work</strong>, possibly due to discouragement 
-                    or temporary withdrawal from the labour force.
-                    </p>
-                    <p>
-                    The chart shows a <strong>steady increase in active unemployment</strong> from January, peaking towards the end of the year, 
-                    reflecting greater job-seeking activity amid challenging economic conditions. In contrast, 
-                    <strong>inactive unemployment fluctuates</strong>, with a sharp rise around April — likely linked to pandemic-related 
-                    disruptions — before gradually declining as job opportunities began to recover.
-                    </p>
-
-                    <div class="slope-chart-container">
-                    <div id="slopechart"></div>
-                    <div id="yearSelectorContainer"></div>
-                    </div>
-                </div>
-                </section>
-
-            </main>
-
-            <footer class="panel-footer">
-                <p style="font-size:0.9rem; color:#666; text-align:center;">
-                Author: YeoYuXuan 34286225
-                </p>
-            </footer>
+                
             </div>
+
+            <div class="map-right">
+                <h4>Unemployment Rate by State</h4>
+                <p>
+                    Sabah records as one of the highest unemployment levels in Malaysia, shown by its consistently darker shading from 2016 to 2020.
+                </p>
+                <p>
+                    This is largely due to its slower economic diversification, limited industrial development, and fewer opportunities for high-skilled employment compared to more urbanised states.
+                </p>
+                <p>
+                    In contrast, most Peninsular states maintain relatively lower rates, suggesting more stable employment conditions and broader economic activity.
+                </p>
+            </div>
+
+            </div>
+        </div>
+        </section>
+
+
+        <!-- bar chart -->
+        <section class="chart-section">
+          <div class="bar-container-wrapper chart-box flex-split">
+            <div class="left">
+              <h4>Youth Unemployment Trends</h4>
+              <p>
+                Over the five-year period, the total number of unemployed youths increased from about 4,762 in 2016 to over 6,000 in 2020.
+              </p>
+              <p>
+                The 15–24 age group consistently recorded the highest unemployment levels, reflecting early career challenges faced by school leavers and fresh graduates entering the job market.
+              </p>
+              
+              <div class="insight-box">
+                <div class="insight-wrapper">
+                    <p>The sharp rise in 2020 reflects the impact of the COVID-19 pandemic</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="right">
+              <div id="barchart"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- donut chart -->
+        <section class="chart-section">
+          <div class="donut-container chart-box">
+            <h4 class="donut-title">Unemployment Rate Distribution by Gender and Stratum</h4>
+            <div class="donut-inner">
+              <div class="donut-col">
+                <p>
+                  Unemployment rates remain fairly balanced between males and females, indicating similar challenges in securing employment. 
+                </p>
+                <p>
+                    However, women experience a slightly higher rate, hinting at persistent inequalities in access to job opportunities and workforce participation.
+                </p>
+                <div id="genderdonut"></div>
+              </div>
+              <div class="donut-col">
+                <p>
+                  Urban areas show a higher concentration of unemployment, as more job seekers pursue city opportunities.
+                </p>
+                <p>
+                In contrast, rural unemployment reflects limited economic diversification and fewer avenues for high-skilled work.
+                </p>
+                <div id="stratumdonut"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- duration chart -->
+        <section class="chart-section">
+          <div class="duration-container chart-box flex-split">
+            <div class="left">
+              <h4>Unemployment Duration Distribution</h4>
+              <p>
+                Unemployment duration in Malaysia shows distinct patterns across different time frames: <span style="color:#af486e;">3 months</span>, <span style="color:#cf6679;">6 months</span>, <span style="color:#d9879b;">12 months</span>, and <span style="color:#e6a8b8;">more than 12 months</span>.
+              </p>
+              <p>
+                Most of the job seekers manage to find employment within the first three to six months, while longer-term unemployment (beyond a year) remains comparatively low.
+              </p>
+            </div>
+            <div class="right">
+              <div id="durationarea"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- slope chart -->
+        <section class="chart-section">
+        <div class="slope-container chart-box flex-split narrow-right">
+            <div class="left">
+            <div id="slopechart"></div>
+            </div>
+
+            <div class="right">
+            <h4>Active vs Inactive Unemployment Trends</h4>
+            <div class="insight-box">
+                <p>
+                    <strong><span style="color:#6c5de6;">Active unemployment</span></strong> refers to individuals actively seeking work but yet to secure employment.
+                    </p>
+            </div>
+
+            <div class="insight-box">
+                <p>
+                <strong><span style="color:#c46487;">Inactive unemployment</span></strong> refers to people not seeking work, often due to discouragement or temporary withdrawal.
+                </p>    
+            </div>
+            
+            <p class="pattern-text">
+                This pattern highlights how the pandemic disrupted labour participation and increased job-seeking pressure later in the year.
+            </p>
+            </div>
+
+        </div>
+        </section>
+
+
+      </main>
+
+      <!-- footer -->
+      <footer class="panel-footer">
+        <p>Author: Yeo Yu Xuan (34286225)</p>
+      </footer>
     </div>
-    <!-- Scripts to Embed JSON Charts -->
-    <script src="W10Homework.js"></script>
-    
+  </div>
+
+  <!-- script to embed charts -->
+  <script src="W10Homework.js"></script>
 </body>
 </html>

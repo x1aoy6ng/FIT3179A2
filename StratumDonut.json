@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "values": [
-      {"stratum": "Urban", "unemployment_rate_percentage": 68.70},
-      {"stratum": "Rural", "unemployment_rate_percentage": 62.70}
+      {"stratum": "Urban", "unemployment_rate_percentage": 73.70},
+      {"stratum": "Rural", "unemployment_rate_percentage": 57.70}
     ]
   },
   "transform": [
@@ -30,7 +30,12 @@
           "field": "stratum",
           "type": "nominal",
           "title": "Stratum",
-          "scale": {"domain": ["Urban", "Rural"], "range": ["#125fb7", "#c46487"]}
+          "scale": {"domain": ["Urban", "Rural"], "range": ["#35857d", "#c46487"]},
+          "legend": {
+            "titleFontSize": 14,
+            "labelFontSize": 11,
+            "symbolSize": 120
+          }
         },
         "tooltip": [
           {"field": "stratum", "title": "Stratum"},

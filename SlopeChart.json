@@ -1,23 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 560,
-  "height": 275,
+  "width": 530,
+  "height": 350,
   "data": {
     "url": "https://raw.githubusercontent.com/x1aoy6ng/FIT3179A2/main/lfs_month_duration_filter.csv"
   },
-  "params": [
-    {
-      "name": "select_year",
-      "value": 2020,
-      "bind": {
-        "input": "select",
-        "options": [2016, 2017, 2018, 2019, 2020],
-        "name": "Select Year: "
-      }
-    }
-  ],
   "transform": [
-    {"filter": "datum.year == select_year"},
+    {"filter": "datum.year == 2020"},
     {
       "fold": ["unemployed_active", "unemployed_inactive"],
       "as": ["status", "count"]
@@ -55,7 +44,7 @@
         "domain": ["Active", "Inactive"],
         "range": ["#6c5de6", "#c46487"]
       },
-      "title": "Unemployment Type"
+      "legend": null
     },
     "tooltip": [
       {"field": "month", "title": "Month"},
@@ -67,10 +56,5 @@
         "format": ",.0f"
       }
     ]
-  },
-  "config": {
-    "axisX": {"grid": false, "labelAngle": 0},
-    "axisY": {"grid": false},
-    "legend": {"titleFontSize": 13, "labelFontSize": 12}
   }
 }

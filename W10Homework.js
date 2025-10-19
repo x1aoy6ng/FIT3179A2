@@ -33,3 +33,20 @@ var vg_6 = "SlopeChart.json";
 vegaEmbed("#slopechart", vg_6, { actions: false })
   .then(function(result) {})
   .catch(console.error);
+
+
+// year selector
+let mapView;
+
+vegaEmbed("#map", "W9Homework.json", { actions: false })
+  .then(result => {
+    mapView = result.view;
+  })
+  .catch(console.error);
+
+document.getElementById("yearSelectHeader").addEventListener("change", function () {
+  const selectedYear = +this.value; // convert to number
+  if (mapView) {
+    mapView.signal("selectedYear", selectedYear).run();
+  }
+});

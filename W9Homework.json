@@ -1,36 +1,31 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 275,
-  "projection": {"type": "mercator", "center": [110, 4]},
-  "view": {"stroke": "#cccccc", "strokeWidth": 0.5, "fill": "#eef6fb"},
+  "width": 600,
+  "height": 250,
+  "projection": { "type": "mercator", "center": [110, 4] },
+  "view": { "stroke": "#cccccc", "strokeWidth": 0.5, "fill": "#eef6fb" },
+
   "params": [
     {
-      "name": "FilterYear",
-      "value": 2020,
-      "bind": {
-        "input": "range",
-        "min": 2016,
-        "max": 2020,
-        "step": 1,
-        "name": "Select Year: "
-      }
+      "name": "selectedYear",
+      "value": 2020
     }
   ],
+
   "layer": [
     {
       "data": {
         "url": "https://x1aoy6ng.github.io/FIT3179Week9Homework/output.json",
-        "format": {"type": "topojson", "feature": "ne_110m_graticules_1"}
+        "format": { "type": "topojson", "feature": "ne_110m_graticules_1" }
       },
-      "mark": {"type": "geoshape", "stroke": "#cccccc", "strokeWidth": 0.5}
+      "mark": { "type": "geoshape", "stroke": "#cccccc", "strokeWidth": 0.5 }
     },
     {
       "data": {
         "url": "https://x1aoy6ng.github.io/FIT3179Week9Homework/malaysia_state_sex_filter.csv"
       },
       "transform": [
-        {"filter": "datum.year == FilterYear"},
+        { "filter": "datum.year == selectedYear" },
         {
           "aggregate": [
             {
@@ -46,7 +41,7 @@
           "from": {
             "data": {
               "url": "https://x1aoy6ng.github.io/FIT3179Week9Homework/output.json",
-              "format": {"type": "topojson", "feature": "my"}
+              "format": { "type": "topojson", "feature": "my" }
             },
             "key": "properties.name",
             "fields": ["type", "properties", "geometry"]
@@ -54,8 +49,8 @@
         },
         {
           "window": [
-            {"op": "min", "field": "unemployment_rate_percentage", "as": "min_rate"},
-            {"op": "max", "field": "unemployment_rate_percentage", "as": "max_rate"}
+            { "op": "min", "field": "unemployment_rate_percentage", "as": "min_rate" },
+            { "op": "max", "field": "unemployment_rate_percentage", "as": "max_rate" }
           ],
           "frame": [null, null]
         },
@@ -64,11 +59,11 @@
           "as": "unemployment_rate_normalised"
         },
         {
-          "calculate": "FilterYear",
+          "calculate": "selectedYear",
           "as": "year"
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "#454545", "strokeWidth": 1},
+      "mark": { "type": "geoshape", "stroke": "#454545", "strokeWidth": 1 },
       "encoding": {
         "color": {
           "field": "unemployment_rate_normalised",
@@ -80,17 +75,16 @@
           },
           "legend": {
             "title": "Unemployment rate",
-            "orient": "top-right",
+            "orient": "none",
+            "legendX": 200,
+            "legendY": 20,
             "direction": "horizontal",
-            "titleAnchor": "middle",   
-            "titleAlign": "center",         
-            "offset": 0
+            "titleAnchor": "middle"
           }
-
         },
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "State"},
-          {"field": "year", "type": "ordinal", "title": "Year"},
+          { "field": "properties.name", "type": "nominal", "title": "State" },
+          { "field": "year", "type": "ordinal", "title": "Year" },
           {
             "field": "unemployment_rate_normalised",
             "type": "quantitative",
@@ -100,15 +94,5 @@
         ]
       }
     }
-  ],
-  "config": {
-    "legend": {
-      "orient": "top-right",
-      "direction": "horizontal",
-      "titleFontSize": 12,
-      "labelFontSize": 11,
-      "offset": 10,
-      "padding": 10
-    }
-  }
+  ]
 }
