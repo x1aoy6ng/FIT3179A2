@@ -45,7 +45,7 @@
         "type": "nominal",
         "scale": {
           "domain": ["Active", "Inactive"],
-          "range": ["#6c5de6", "#c46487"]
+          "range": ["#8176aa", "#31a1b5"]
         },
         "legend": null
       },
@@ -90,7 +90,7 @@
         "title": "Number of Unemployed Persons"
       },
         "text": {"value": ["Pandemic lockdowns in April led to a temporary" ,"surge in inactive job seekers"]},
-        "color": {"value": "#c46487"}
+        "color": {"value": "#31a1b5"}
       }
     },
     {
@@ -122,7 +122,7 @@
         "title": "Number of Unemployed Persons"
       },
         "text": {"value": ["Active unemployment began to", "rise again in September, signaling" ,"renewed job-seeking efforts"]},
-        "color": {"value": "#6c5de6"}
+        "color": {"value": "#8176aa"}
       }
     }
   ]

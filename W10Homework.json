@@ -29,7 +29,7 @@
           "title": "Age Group",
           "scale": {
             "domain": ["15–24 years old", "25–30 years old"],
-            "range": ["#c699bc", "#c46487"]
+            "range": ["#79c0a3", "#8174a9"]
           },
           "legend": {
             "title": "Age Group",
@@ -59,7 +59,7 @@
     {
       "mark": {
         "type": "line",
-        "color": "#6c5de6",     
+        "color": "#31a1b5",     
         "strokeWidth": 3
       },
       "encoding": {
@@ -76,7 +76,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "color": "#6c5de6",
+        "color": "#31a1b5",
         "size": 80,
         "strokeWidth": 2
       },

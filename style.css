@@ -47,7 +47,7 @@ body::after {
 .panel {
   width: 100%;
   max-width: var(--panel-max-width);
-  background: #716868ff;
+  background: #ffffffff;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(18, 24, 34, 0.15);
   display: flex;
@@ -61,7 +61,7 @@ header {
   text-align: center;
   padding: 50px 30px 40px;
   border-bottom: 2px solid #e8eef5;
-  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, #cee3f9ff 0%, #ffffff 100%);
 }
 
 header h1 {
@@ -325,19 +325,47 @@ header .subtitle {
 
 /* --- footer --- */
 .panel-footer {
-  width: 100%;
-  padding: 24px;
+  background: linear-gradient(to bottom, #ffffff 0%, #cee3f9ff 100%);
   border-top: 2px solid #e8eef5;
+  padding: 10px 20px 20px 40px;
+  text-align: justify;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.panel-footer h3 {
+  font-family: 'Georgia', serif;
   text-align: center;
-  background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
+  color: #1e40af;
+  font-size: 1.5em;
+  margin-bottom: 15px;
 }
 
 .panel-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #718096;
-  font-weight: 500;
+  margin: 5px 0;
+  font-size: 1em;
 }
+
+.panel-footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.panel-footer li {
+  margin: 4px 0;
+}
+
+.panel-footer a {
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.panel-footer a:hover {
+  text-decoration: underline;
+}
+
+
 
 .chart-annotation-wrapper {
   position: relative;
