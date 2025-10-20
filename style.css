@@ -64,7 +64,7 @@ body::after {
 header {
   width: 100%;
   text-align: center;
-  padding: 50px 30px 40px;
+  padding: 30px 30px 30px 30px;
   border-bottom: 2px solid #e8eef5;
   background: linear-gradient(to bottom, #cee3f9ff 0%, #ffffff 100%);
 }
