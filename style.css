@@ -2,16 +2,21 @@
   --panel-max-width: 1100px;
   --panel-padding: 40px;
   --bg-opacity: 0.55;
+  --font-serif: 'Bree Serif', serif;
+  --font-sans: 'Sora', sans-serif;
 }
 
 /* --- base layout --- */
 html, body {
   height: 100%;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   background: none;
   overflow-x: hidden;
+  color: #222;
+  line-height: 1.6;
 }
+
 
 /* --- blurred background with light overlay --- */
 body::before {
@@ -65,22 +70,20 @@ header {
 }
 
 header h1 {
-  font-family: 'Georgia', serif;
+  font-family: var(--font-serif);
   font-weight: 800;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #1e40af;
-  letter-spacing: -0.5px;
-  margin-bottom: 1.2rem;
 }
 
 header .subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  color: #4a5568;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: #000000;
   line-height: 1.9;
+  text-align: justify;
   margin: 0.4rem auto;
   max-width: 550px;
-  text-align: justify;
 }
 
 /* --- panel body --- */
@@ -103,7 +106,7 @@ header .subtitle {
 
 /* --- section title --- */
 .chart-box h4 {
-  font-family: 'Georgia', serif;
+  font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
   color: #1e3a8a;
@@ -112,9 +115,10 @@ header .subtitle {
 }
 
 .chart-box p {
-  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   line-height: 1.5;
-  color: #4a5568;
+  color: #000000;
   margin-bottom: 5px;
   text-align: justify; 
 }
@@ -207,7 +211,7 @@ header .subtitle {
 }
 
 .map-right h4 {
-  font-family: 'Georgia', serif;
+  font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
   color: #1e3a8a;
@@ -216,9 +220,10 @@ header .subtitle {
 }
 
 .map-right p {
-  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   line-height: 1.5;
-  color: #4a5568;
+  color: #000000;
   margin-bottom: 5px;
   text-align: justify; 
 }
@@ -231,12 +236,12 @@ header .subtitle {
 .year-selector-wrapper p {
   margin-bottom: 6px;
   color: #4a5568;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .year-selector-wrapper label {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   margin-right: 6px;
   color: #2d3748;
 }
@@ -249,7 +254,7 @@ header .subtitle {
   background-color: #fff;
   color: #2d3748;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 
@@ -270,6 +275,7 @@ header .subtitle {
 }
 
 .donut-title {
+  font-family: var(--font-serif);
   font-size: 1.3rem;
   font-weight: 700;
   color: #1e3a8a;
@@ -303,9 +309,10 @@ header .subtitle {
 }
 `
 .insight-box p {
+  font-family: var(--font-sans);
   margin: 0;
-  color: #374151;  
-  font-size: 1rem;
+  color: #4a5568;  
+  font-size: 0.85rem;
   line-height: 1.7;
   text-align: justify;
 }
@@ -318,8 +325,7 @@ header .subtitle {
 .insight-wrapper p {
   padding: 15px 10px 5px 5px;
   color: #4a5568;
-  font-size: 0.95rem;
-  font-weight: 550;
+  font-size: 0.85rem;
   color: #2d3748;
 }
 
@@ -331,25 +337,27 @@ header .subtitle {
   text-align: justify;
   font-family: 'Inter', sans-serif;
   color: #333;
+  font-family: var(--font-sans);
 }
 
 .panel-footer h3 {
-  font-family: 'Georgia', serif;
+  font-family: var(--font-serif);
   text-align: center;
-  color: #1e40af;
+  color: #1e3a8a;
   font-size: 1.5em;
   margin-bottom: 15px;
 }
 
 .panel-footer p {
   margin: 5px 0;
-  font-size: 1em;
+  font-size: 0.85rem;
 }
 
 .panel-footer ul {
   list-style: none;
   padding-left: 0;
   margin-top: 10px;
+  font-size: 0.85rem;
 }
 
 .panel-footer li {
@@ -417,16 +425,16 @@ header .subtitle {
 .donut-annotation {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
   text-align: justify;
   font-size: 0.85rem;
   font-weight: 600;
-  width: 200px;
+  width: 168px;
   line-height: 1.2;
   color: black;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 6px 10px;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #ddd;
   border-radius: 10px;
   pointer-events: none; /* prevents blocking chart hover */

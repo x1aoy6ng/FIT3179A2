@@ -34,7 +34,7 @@
           "scale": {"domain": ["Male", "Female"], "range": ["#2677d4", "#fa9ad5"]},
           "legend": {
             "titleFontSize": 14,
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "symbolSize": 120
           }
         },

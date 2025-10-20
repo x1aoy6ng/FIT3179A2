@@ -34,7 +34,7 @@
           "scale": {"domain": ["Urban", "Rural"], "range": ["#cbb22b", "#83c5ad"]},
           "legend": {
             "titleFontSize": 14,
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "symbolSize": 120
           }
         },
