@@ -68,7 +68,7 @@
       "title": "Unemployment Duration",
       "scale": {
         "domain": ["more than 12 months", "12 months", "6 months", "3 months"],
-        "range": ["#8176aa", "#87c4a8", "#a3d7ca", "#cbb22b"]
+        "range": ["#8176aa", "#66c196", "#82d5c0", "#cbb22b"]
       },
       "sort": ["more than 12 months", "12 months", "6 months", "3 months"],
       "legend": null

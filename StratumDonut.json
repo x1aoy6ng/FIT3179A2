@@ -31,7 +31,7 @@
           "field": "stratum",
           "type": "nominal",
           "title": "Stratum",
-          "scale": {"domain": ["Urban", "Rural"], "range": ["#cbb22b", "#83c5ad"]},
+          "scale": {"domain": ["Urban", "Rural"], "range": ["#cbb22b", "#62b194"]},
           "legend": {
             "titleFontSize": 14,
             "labelFontSize": 12,
