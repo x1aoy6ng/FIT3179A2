@@ -99,8 +99,8 @@
       "data": {
         "values": [
           {
-            "longitude": 117.5,
-            "latitude": 5.8,
+            "longitude": 117.0,
+            "latitude": 5.5,
             "label": "Sabah"
           }
         ]
@@ -109,8 +109,8 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": -35,
-        "dy": 15,
+        "dx": -20,
+        "dy": 2,
         "fontSize": 12,
         "color": "#ffffff"
       },
