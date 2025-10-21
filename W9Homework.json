@@ -94,6 +94,31 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "longitude": 117.5,
+            "latitude": 5.8,
+            "label": "Sabah"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": -35,
+        "dy": 15,
+        "fontSize": 12,
+        "color": "#ffffff"
+      },
+      "encoding": {
+        "longitude": { "field": "longitude", "type": "quantitative" },
+        "latitude": { "field": "latitude", "type": "quantitative" },
+        "text": { "field": "label", "type": "nominal" }
+      }
     }
   ]
 }
